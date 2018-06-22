@@ -8,7 +8,7 @@
           </Menu>
         </Header>
         <Layout>
-          <Sider hide-trigger :style="{background: '#5b6270', height: '93vh',left: 0, overflow: 'hidden'}">
+          <Sider hide-trigger :style="{background: '#5b6270', height: 'auto',left: 0, overflow: 'hidden'}">
             <Menu active-name="1-1" theme="dark" width="auto" :open-names="['1']">
               <router-link to="/" style="display: block">
                  <MenuItem name="1-1">
@@ -32,7 +32,7 @@
               </Submenu>
             </Menu>
           </Sider>
-          <Layout :style="{padding: '10px 24px 24px',overflow: 'auto'}">
+          <Layout :style="{padding: '10px 24px 24px',overflow: 'hidden'}">
             <Content :style="{padding: '0', minHeight: '280px', background: '#F5F7F9'}">
               <router-view></router-view>
             </Content>
@@ -49,7 +49,6 @@ export default {
   methods:{
     init(){
       this.$http.get('/webapi/selfInfo').then(data=>{
-        console.log(data)
         this.$store.commit('changeLogin',data.data)
       })
     }
