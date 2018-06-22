@@ -3,21 +3,11 @@
 </template>
 
 <script>
-    export default {
+ import { mapMutations,mapState } from 'vuex'
+  export default {
         name: "environment",
-        methods:{
-          init(){
-          this.$http.get('/webapi/selfInfo',{
 
-          }).then(function (result) {
-            console.log(result)
-          })
-          }
-        },
-      mounted(){
-          this.init();
-      }
-    }
+ }
 </script>
 
 <style scoped>

@@ -1,10 +1,25 @@
 <template>
-    <div>dashshshshshshsh</div>
+    <div>
+    <bargraph></bargraph>
+    </div>
 </template>
 
 <script>
+  import bargraph from './dash/bargraph'
     export default {
-        name: "dashboard"
+        name: "dashboard",
+      components:{
+        bargraph,
+      },
+      methods:{
+
+      },
+      mounted(){
+          console.log(this.$route)
+      },
+      computed:{
+
+      }
     }
 </script>
 

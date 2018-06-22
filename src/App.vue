@@ -8,14 +8,12 @@
           </Menu>
         </Header>
         <Layout>
-          <Sider hide-trigger :style="{background: '#fff', height: '93vh',left: 0, overflow: 'hidden'}">
-            <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
+          <Sider hide-trigger :style="{background: '#5b6270', height: '93vh',left: 0, overflow: 'hidden'}">
+            <Menu active-name="1-1" theme="dark" width="auto" :open-names="['1']">
               <router-link to="/" style="display: block">
                  <MenuItem name="1-1">
                    <Icon type="ios-navigate"></Icon>
-                   <span>
-                          首页
-                   </span>
+                   <span>首页</span>
                  </MenuItem>
               </router-link>
               <router-link to="/environment" style="display: block">
@@ -35,7 +33,7 @@
             </Menu>
           </Sider>
           <Layout :style="{padding: '10px 24px 24px',overflow: 'auto'}">
-            <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
+            <Content :style="{padding: '0', minHeight: '280px', background: '#F5F7F9'}">
               <router-view></router-view>
             </Content>
           </Layout>
@@ -47,7 +45,18 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods:{
+    init(){
+      this.$http.get('/webapi/selfInfo').then(data=>{
+        console.log(data)
+        this.$store.commit('changeLogin',data.data)
+      })
+    }
+  },
+  created(){
+      this.init()
+  }
 }
 </script>
 <style scoped>
