@@ -87,8 +87,8 @@
         }
       },
       mounted() {
-          this.line();
-          this.barnum();
+          //this.line();
+         // this.barnum();
       }
     }
 </script>

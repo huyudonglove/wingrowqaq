@@ -3,35 +3,40 @@
     <div class="layout">
       <Layout>
         <Header>
-          <Menu mode="horizontal" theme="dark" active-name="1">
+          <Menu mode="horizontal" theme="dark" >
             <div class="layout-logo"></div>
           </Menu>
         </Header>
         <Layout>
-          <Sider hide-trigger :style="{background: '#5b6270', height: 'auto',left: 0, overflow: 'hidden'}">
-            <Menu active-name="1-1" theme="dark" width="auto" :open-names="['1']">
+          <Sider hide-trigger :style="{background: '#5b6270', height: '57.5rem',left: 0, overflow: 'hidden'}">
+            <Menu :active-name='$route.name' theme="dark" width="auto" >
               <router-link to="/" style="display: block">
-                 <MenuItem name="1-1">
+                 <MenuItem name="dashboard">
                    <Icon type="ios-navigate"></Icon>
                    <span>首页</span>
                  </MenuItem>
               </router-link>
               <router-link to="/environment" style="display: block">
-                <MenuItem name="1-2">
+                <MenuItem name="environment">
                     <Icon type="ios-navigate"></Icon>
                     <span>环境</span>
                 </MenuItem>
               </router-link>
-              <Submenu name="3">
+              <Submenu name="system">
                 <template slot="title">
                   <Icon type="ios-analytics"></Icon>
-                  配置
+                  系统
                 </template>
-                <MenuItem name="3-1">Option 1</MenuItem>
-                <MenuItem name="3-2">Option 2</MenuItem>
+                <router-link to="/system/control" style="display: block">
+                  <MenuItem name="control">配置管理</MenuItem>
+                </router-link>
+                <router-link to="/system/store" style="display: block">
+                  <MenuItem name="store">仓库</MenuItem>
+                </router-link>
               </Submenu>
             </Menu>
           </Sider>
+
           <Layout :style="{padding: '10px 24px 24px',overflow: 'hidden'}">
             <Content :style="{padding: '0', minHeight: '280px', background: '#F5F7F9'}">
               <router-view></router-view>
@@ -46,6 +51,11 @@
 <script>
 export default {
   name: 'App',
+  data(){
+    return{
+      me:'environment'
+    }
+  },
   methods:{
     init(){
       this.$http.get('/webapi/selfInfo').then(data=>{

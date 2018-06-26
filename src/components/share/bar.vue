@@ -1,9 +1,19 @@
 <template>
-    <div>
-      <Row style="height: 1rem">
-        <Col span="12">777</Col>
-        <Col span="12">8888</Col>
-      </Row>
+    <div class="bar">
+      <Breadcrumb v-if="$route.name=='environment'">
+        <span>当前位置:</span>
+        <BreadcrumbItem to="/environment">环境</BreadcrumbItem>
+        <BreadcrumbItem to="/">Components</BreadcrumbItem>
+        <BreadcrumbItem>Breadcrumb</BreadcrumbItem>
+      </Breadcrumb>
+      <Breadcrumb v-if="$route.name=='control'">
+        <span>当前位置:</span>
+        <BreadcrumbItem to="/environment">配置管理</BreadcrumbItem>
+      </Breadcrumb>
+      <Breadcrumb v-if="$route.name=='store'">
+        <span>当前位置:</span>
+        <BreadcrumbItem to="/environment">仓库</BreadcrumbItem>
+      </Breadcrumb>
     </div>
 </template>
 
@@ -17,5 +27,9 @@
 </script>
 
 <style scoped>
-
+.bar{
+  position: relative;
+  width: 100%;
+  background: white;
+}
 </style>

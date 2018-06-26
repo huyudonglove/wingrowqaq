@@ -1,19 +1,18 @@
 <template>
     <div>
       <bar></bar>
-      <div>8989599</div>
+      <router-view></router-view>
     </div>
 </template>
 
 <script>
-  import bar from './share/bar'
-  export default {
-        name: "environment",
+  import bar from '../share/bar'
+    export default {
+        name: "system",
         components:{
-          bar,
+          bar
         }
-
- }
+    }
 </script>
 
 <style scoped>

@@ -4,7 +4,7 @@
       <div>
         <Tabs type="card">
           <TabPane label="最近构建流水线">
-            <Row v-for="a in all" style="border-bottom: 1px solid #ddd;">
+            <Row v-for="a in all" :key="a.name" style="border-bottom: 1px solid #ddd;">
               <Col  span="4">
                 <div>
                 {{a.name}}
@@ -21,18 +21,18 @@
             </Row>
           </TabPane>
           <TabPane label="最近构建失败流水线" >
-            <Row v-for="a in falseall" style="border-bottom: 1px solid #ddd;">
+            <Row v-for="d in falseall" :key="d.name" style="border-bottom: 1px solid #ddd;">
               <Col  span="4">
               <div>
-                {{a.name}}
+                {{d.name}}
               </div>
               <div>
-                {{a.startTimeMillis |formatDate}}
+                {{d.startTimeMillis |formatDate}}
               </div>
               </Col>
               <Col  span="20">
-              <span v-for="b in a.stages">
-                  <span >{{b}}</span>
+              <span v-for="e in d.stages">
+                  <span >{{e}}</span>
                 </span>
               </Col>
             </Row>
