@@ -5,7 +5,7 @@
   "author": "huyudonglove <379145942@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --env.dev --history-api-fallback --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
@@ -64,7 +64,10 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "axios": "^0.18.0",
+    "vue-axios": "^2.1.1",
+    "vue-echarts": "^3.0.9"
   },
   "engines": {
     "node": ">= 6.0.0",

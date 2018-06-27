@@ -1,0 +1,49 @@
+import userAPI from '../../api/user'
+
+//state
+const state = {
+   user:null 
+}
+
+
+
+
+
+// getters
+const getters = {
+
+}
+
+
+
+// actions
+const actions = {
+    init ({ commit }) {
+        userAPI.getUserInfo(
+	   user =>{
+                commit('setUserInfo', user)
+
+           }	
+	)
+    }	
+
+}
+
+
+
+// mutations
+const mutations = {
+   setUserInfo(state,user){
+	state.user = user;
+   }	 
+}
+
+
+
+export default {
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations
+}

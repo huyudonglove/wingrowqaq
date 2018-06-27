@@ -2,7 +2,7 @@
     <div >
       <bargraph></bargraph>
       <timeline></timeline>
-      <recentnum></recentnum>
+      <!-- <recentnum></recentnum> -->
     </div>
 </template>
 

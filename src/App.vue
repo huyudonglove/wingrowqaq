@@ -49,6 +49,8 @@
 </template>
 
 <script>
+
+  
 export default {
   name: 'App',
   data(){
@@ -57,14 +59,18 @@ export default {
     }
   },
   methods:{
-    init(){
-      this.$http.get('/webapi/selfInfo').then(data=>{
-        this.$store.commit('changeLogin',data.data)
-      })
-    }
+       checkUserIsLogin(){
+           this.$store.dispatch('user/init').then((u)=>{
+                   console.log(u);
+       
+           },()=>{
+                 console.log("no login");
+                 //redict to cas server;
+           });
+       }
   },
   created(){
-      this.init()
+       this.checkUserIsLogin();
   }
 }
 </script>

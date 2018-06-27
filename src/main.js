@@ -16,6 +16,9 @@ Vue.use(iView);
 Vue.component('chart', ECharts)
 Vue.config.productionTip = false
 Vue.prototype.$http= axios
+
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

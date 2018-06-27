@@ -64,9 +64,6 @@
               console.log(data.data)
               this.falseall=data.data
             })
-          },
-          me(){
-            alert(123)
           }
         },
         mounted(){
