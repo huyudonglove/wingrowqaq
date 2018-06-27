@@ -52,9 +52,8 @@
         @on-ok="sure"
         @on-cancel="no"
         >
-        <p>Content of dialog</p>
-        <p>Content of dialog</p>
-        <p>Content of dialog</p>
+        <p>{{deleteserver}}</p>
+
       </Modal>
     </div>
 </template>
@@ -128,16 +127,16 @@
               secure:false,
               server:''
           },
+          deleteserver:''
         }
       },
       methods: {
         remove (index) {
-          //this.data6.splice(index, 1);
           this.modal3=true;
-          //console.log(this.current)
+          this.deleteserver=this.data6[index].server;
         },
-        sure(index){
-          this.$http.delete('/webapi/misc/registry/'+this.data6[index].server,"application/json").then(data=>{
+        sure(){
+          this.$http.delete('/webapi/misc/registry/'+this.deleteserver,"application/json").then(data=>{
             if(data.status==200){
               if(!data.data.exception){
                 this.$Message.success('删除成功');
