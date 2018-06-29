@@ -30,9 +30,6 @@
                 <router-link to="/system/control" style="display: block">
                   <MenuItem name="control">配置管理</MenuItem>
                 </router-link>
-                <router-link to="/system/store" style="display: block">
-                  <MenuItem name="store">仓库</MenuItem>
-                </router-link>
               </Submenu>
             </Menu>
           </Sider>
@@ -49,6 +46,8 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+
 export default {
   name: 'App',
   data(){
@@ -57,14 +56,24 @@ export default {
     }
   },
   methods:{
-    init(){
-      this.$http.get('/webapi/selfInfo').then(data=>{
-        this.$store.commit('changeLogin',data.data)
-      })
-    }
+       checkUserIsLogin(){
+           this.$store.dispatch('user/init').then((u)=>{
+                   console.log(u,'777777777');
+           },()=>{
+                 console.log("no login");
+                 //redict to cas server;
+           });
+       },
+    ...mapActions('user',
+      [
+        'init',
+      ])
   },
   created(){
-      this.init()
+       //this.checkUserIsLogin();
+       this.init().then((u) => {
+         console.log(u)
+       });
   }
 }
 </script>

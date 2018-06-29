@@ -52,13 +52,24 @@
             <Button type="primary" @click="storesmtp">保存</Button>
           </div>
         </TabPane>
+        <TabPane label="仓库">
+          <store></store>
+        </TabPane>
       </Tabs>
     </div>
 </template>
 
 <script>
-    export default {
+  import { mapActions } from 'vuex'
+  import { mapState } from 'vuex'
+  import { mapMutations } from 'vuex'
+  import store from './store'
+
+  export default {
         name: "control",
+        components:{
+          store
+        },
         data(){
           return{
             Sonar:{
@@ -72,11 +83,11 @@
               password:'',
               port:'',
               ssl:'',
-            }
+            },
           }
         },
         methods:{
-            sonar(){
+            /*sonar(){
               this.$http.get('/webapi/misc/sonar').then(data=>{
                 console.log(data)
                 if(data.status==200){
@@ -85,7 +96,7 @@
                   this.Sonar.password=data.data.password
                 }
               })
-            },
+            },*/
             storesonar(){
               this.$http.put('/webapi/misc/sonar',this.Sonar).then(data=>{
                 console.log(data)
@@ -115,11 +126,38 @@
                 }
                 this.smtp();
               })
+            },
+          ...mapActions('system',
+            [
+              'sonarinit',
+              'sonarme'
+            ]),
+          ...mapMutations('system',{
+            test: 'test'
+          }),
+            sonar(){
+              this.sonarinit().then((u)=>{
+                this.Sonar.sonarUrl=u.sonarUrl
+                this.Sonar.user=u.user
+                this.Sonar.password=u.password
+                }
+              )
+              console.log(this.a)
+              console.log(this.b,'///')
             }
+        },
+        computed:{
+          ...mapState('system',{
+            a:state=>state.sonarall,
+            b:state=>state.bb
+            }
+          )
         },
         mounted(){
           this.sonar();
+          this.sonarme('123')
           this.smtp();
+          //this.test('123')
         }
     }
 </script>

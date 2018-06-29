@@ -5,18 +5,25 @@ import environment from '@/components/environment'
 import system from '@/components/system/system'
 import control from '@/components/system/control'
 import store from '@/components/system/store'
+
+
 Vue.use(Router)
-export default new Router({
+//export default new
+
+const router =  new Router({
+  //mode: 'history',
   routes: [
     {
       path: '/',
       name: 'dashboard',
-      component:dashboard
+      component:dashboard,
+      meta: { requiresAuth: true }
     },
     {
       path: '/environment',
       name: 'environment',
-      component:environment
+      component:environment,
+      meta: { requiresAuth: true }
     },
     {
       path: '/system',
@@ -25,7 +32,19 @@ export default new Router({
       children:[
         {path:'/system/control',name:'control',component:control},
         {path:'/system/store',name:'store',component:store}
-      ]
+      ],
+      meta: { requiresAuth: true }
     }
   ]
 })
+
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+       next()
+  }else{
+      next()
+  }
+})
+
+export default router;

@@ -1,21 +1,18 @@
 import Vue from 'vue'
 import vuex from 'vuex'
+import user from './modules/user'
+import system from './modules/system'
+import createLogger from '../plugins/logger'
 Vue.use(vuex);
-const state={
-  loginInfo:'',
-}
-const mutations={
-  changeLogin(state,status){
-    state.loginInfo=status
-  },
-  metest(){
-    alert('123')
-  },
-  all(){
-    alert('456')
-  }
-}
+const debug = process.env.NODE_ENV !== 'production'
 export default new vuex.Store({
-  state,
-  mutations,
+  modules: {
+     user,
+    system
+  },
+  mutations:{
+
+  },
+  strict: debug,
+  plugins: debug ? [createLogger()] : []
 })

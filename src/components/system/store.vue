@@ -59,8 +59,10 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
     export default {
         name: "store",
+
       data () {
         return {
           columns7: [
@@ -200,10 +202,13 @@
         },
         creat(){
           this.modal2=true
-        }
+        },
+
       },
+
       mounted(){
           this.init();
+
       }
     }
 </script>
