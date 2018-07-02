@@ -7,7 +7,7 @@
             <div class="layout-logo"></div>
           </Menu>
         </Header>
-        <Layout>
+        <!--<Layout>
           <Sider hide-trigger :style="{background: '#5b6270', height: '57.5rem',left: 0, overflow: 'hidden'}">
             <Menu :active-name='$route.name' theme="dark" width="auto" >
               <router-link to="/" style="display: block">
@@ -25,7 +25,7 @@
               <Submenu name="system">
                 <template slot="title">
                   <Icon type="ios-analytics"></Icon>
-                  系统
+                  <span>系统</span>
                 </template>
                 <router-link to="/system/control" style="display: block">
                   <MenuItem name="control">配置管理</MenuItem>
@@ -39,7 +39,8 @@
               <router-view></router-view>
             </Content>
           </Layout>
-        </Layout>
+        </Layout>-->
+        <leftside></leftside>
       </Layout>
     </div>
   </div>
@@ -47,7 +48,8 @@
 
 <script>
   import { mapActions } from 'vuex'
-
+  import { mapState } from 'vuex'
+  import leftside from './components/share/leftside'
 export default {
   name: 'App',
   data(){
@@ -55,13 +57,15 @@ export default {
       me:'environment'
     }
   },
+  components:{
+      leftside
+  },
   methods:{
        checkUserIsLogin(){
            this.$store.dispatch('user/init').then((u)=>{
-                   console.log(u,'777777777');
+                   console.log(u);
            },()=>{
                  console.log("no login");
-                 //redict to cas server;
            });
        },
     ...mapActions('user',
@@ -69,11 +73,15 @@ export default {
         'init',
       ])
   },
+  computed:{
+
+  },
   created(){
        //this.checkUserIsLogin();
        this.init().then((u) => {
-         console.log(u)
+         //console.log(u)
        });
+
   }
 }
 </script>
