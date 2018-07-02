@@ -3,19 +3,16 @@ const state = {
     {
       path:'/',
       text:'首页',
-      type:'',
       name:'dashboard'
     },
     {
       path:'/environment',
       text:'环境',
-      type:'',
       name:'environment'
     },
     {
       path:'',
       text:'系统',
-      type:'parent',
       children:[
         {
           path:'/system/control',

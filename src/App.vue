@@ -7,40 +7,7 @@
             <div class="layout-logo"></div>
           </Menu>
         </Header>
-        <!--<Layout>
-          <Sider hide-trigger :style="{background: '#5b6270', height: '57.5rem',left: 0, overflow: 'hidden'}">
-            <Menu :active-name='$route.name' theme="dark" width="auto" >
-              <router-link to="/" style="display: block">
-                 <MenuItem name="dashboard">
-                   <Icon type="ios-navigate"></Icon>
-                   <span>首页</span>
-                 </MenuItem>
-              </router-link>
-              <router-link to="/environment" style="display: block">
-                <MenuItem name="environment">
-                    <Icon type="ios-navigate"></Icon>
-                    <span>环境</span>
-                </MenuItem>
-              </router-link>
-              <Submenu name="system">
-                <template slot="title">
-                  <Icon type="ios-analytics"></Icon>
-                  <span>系统</span>
-                </template>
-                <router-link to="/system/control" style="display: block">
-                  <MenuItem name="control">配置管理</MenuItem>
-                </router-link>
-              </Submenu>
-            </Menu>
-          </Sider>
-
-          <Layout :style="{padding: '10px 24px 24px',overflow: 'hidden'}">
-            <Content :style="{padding: '0', minHeight: '280px', background: '#F5F7F9'}">
-              <router-view></router-view>
-            </Content>
-          </Layout>
-        </Layout>-->
-        <leftside></leftside>
+          <leftside :nav="nav"></leftside>
       </Layout>
     </div>
   </div>
@@ -74,7 +41,9 @@ export default {
       ])
   },
   computed:{
-
+    ...mapState('nav',{
+      nav:state=>state.nav
+    })
   },
   created(){
        //this.checkUserIsLogin();

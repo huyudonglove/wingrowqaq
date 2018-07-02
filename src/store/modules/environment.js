@@ -23,16 +23,10 @@ const actions = {
     });
   }
 }
-
-
-
 // mutations
 const mutations = {
 
 }
-
-
-
 export default {
   namespaced: true,
   state,
