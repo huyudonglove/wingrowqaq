@@ -5,6 +5,7 @@ import environment from '@/components/environment'
 import system from '@/components/system/system'
 import control from '@/components/system/control'
 import store from '@/components/system/store'
+import detail from '@/components/flowline/detail'
 
 
 Vue.use(Router)
@@ -23,7 +24,10 @@ const router =  new Router({
       path: '/environment',
       name: 'environment',
       component:environment,
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true },
+      children:[
+        {path:'/environment/:id',name:'detail',component:detail}
+      ]
     },
     {
       path: '/system',

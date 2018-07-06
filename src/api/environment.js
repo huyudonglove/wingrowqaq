@@ -11,4 +11,14 @@ export default {
         fail(error);
       });
   },
+  getDetail(){
+    axios.get('/webapi/projectgroup/Group1a3575/info').then(
+      (response)=>{
+        //success(response.data)
+        console.log(response.data,'detail')
+      }
+    ).catch((error)=>{
+      console.log(error)
+    })
+  }
 }

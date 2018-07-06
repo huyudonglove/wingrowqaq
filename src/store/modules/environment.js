@@ -1,7 +1,7 @@
 import environmentAPI from '../../api/environment'
 //state
 const state = {
-  user:null
+  data1:[]
 }
 // getters
 const getters = {
@@ -9,7 +9,7 @@ const getters = {
 }
 // actions
 const actions = {
-  init () {
+  init ({commit}) {
     return new Promise((resolve, reject) => {
       environmentAPI.getEnvironment(
         user =>{
@@ -20,12 +20,27 @@ const actions = {
           }
         }
       )
-    });
+    })
+  },
+  detailinit(){
+    return new Promise((resolve ,reject)=>{
+      environmentAPI.getDetail(
+        user=>{
+            if(user){
+              resolve(uesr)
+            }else{
+              reject()
+            }
+        }
+      )
+    })
   }
 }
 // mutations
 const mutations = {
-
+      allenvironment(state,n){
+          state.data1=n
+      }
 }
 export default {
   namespaced: true,

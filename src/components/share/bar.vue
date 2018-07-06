@@ -3,8 +3,11 @@
       <Breadcrumb v-if="$route.name=='environment'">
         <span>当前位置:</span>
         <BreadcrumbItem to="/environment">环境</BreadcrumbItem>
-        <BreadcrumbItem to="/">Components</BreadcrumbItem>
-        <BreadcrumbItem>Breadcrumb</BreadcrumbItem>
+      </Breadcrumb>
+      <Breadcrumb v-if="$route.name=='detail'">
+        <span>当前位置:</span>
+        <BreadcrumbItem to="/environment">环境</BreadcrumbItem>
+        <BreadcrumbItem >详情</BreadcrumbItem>
       </Breadcrumb>
       <Breadcrumb v-if="$route.name=='control'">
         <span>当前位置:</span>
